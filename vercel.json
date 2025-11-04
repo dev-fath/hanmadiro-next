@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/daily-assignment",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/cleanup-tokens",
+      "schedule": "0 3 * * *"
+    }
+  ],
+  "buildCommand": "prisma generate && next build",
+  "framework": "nextjs",
+  "regions": ["icn1"]
+}
+

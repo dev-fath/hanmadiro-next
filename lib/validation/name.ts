@@ -19,7 +19,10 @@ export function validateName(name: string): { success: boolean; error?: string }
     return { success: true };
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return { success: false, error: error.errors[0]?.message };
+      const firstError = error.errors?.[0];
+      if (firstError?.message) {
+        return { success: false, error: firstError.message };
+      }
     }
     return { success: false, error: "이름 검증에 실패했습니다" };
   }

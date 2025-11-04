@@ -12,7 +12,7 @@ export function validatePassword(password: string): { success: boolean; error?: 
     passwordSchema.parse(password);
     return { success: true };
   } catch (error) {
-    if (error instanceof z.ZodError) {
+    if (error instanceof z.ZodError && error.errors && error.errors.length > 0) {
       return { success: false, error: error.errors[0]?.message };
     }
     return { success: false, error: "비밀번호 검증에 실패했습니다" };
